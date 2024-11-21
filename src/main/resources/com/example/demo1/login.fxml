@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?scenebuilder-stylesheet /com/example/demo1/styles.css?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.demo1.LoginController"
+      stylesheets="@styles.css"
+      styleClass="login-container">
+
+    <padding>
+        <javafx.geometry.Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Login" styleClass="login-header"/>
+    <TextField fx:id="usernameField" promptText="Username" styleClass="login-field"/>
+    <PasswordField fx:id="passwordField" promptText="Password" styleClass="login-field"/>
+    <Button text="Login" onAction="#handleLogin" styleClass="login-button"/>
+</VBox>
