@@ -30,7 +30,7 @@
 
 .login-button {
     -fx-background-color: #3498db;
-    -fx-text-fill: white;
+    -fx-text-fill: red;
     -fx-font-size: 14px;
     -fx-padding: 12px 30px;
     -fx-background-radius: 4px;
