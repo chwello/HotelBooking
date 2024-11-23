@@ -8,6 +8,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.Rectangle?>
 
+<?import javafx.scene.shape.SVGPath?>
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo1.HomeController"
@@ -65,6 +66,10 @@
                            style="-fx-font-size: 18; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 2, 0.0, 0, 1); -fx-font-family: 'Poppins';"/>
                 </VBox>
             </StackPane>
+
+
+
+
 
             <!-- First Featured Hotels Section -->
             <VBox alignment="TOP_CENTER" spacing="20.0">

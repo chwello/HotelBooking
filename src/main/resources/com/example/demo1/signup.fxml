@@ -5,32 +5,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-
-<?import javafx.scene.shape.Rectangle?>
 <HBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.demo1.LoginController"
+      fx:controller="com.example.demo1.Signup"
       style="-fx-background-color: white;">
 
     <!-- Left Section with Image -->
     <StackPane HBox.hgrow="ALWAYS">
         <ImageView fitWidth="500" fitHeight="600">
             <Image url="@images/background.jpg"/>
-
         </ImageView>
 
         <!-- Purple Overlay with Content -->
         <VBox style="-fx-background-color: rgba(88, 28, 135, 0.5);" spacing="20">
-
             <!-- Center Content -->
             <VBox alignment="CENTER" VBox.vgrow="ALWAYS" spacing="10">
                 <Label text="Capturing Moments,"
                        style="-fx-font-size: 32; -fx-text-fill: white; -fx-font-weight: bold;"/>
                 <Label text="Creating Memories"
                        style="-fx-font-size: 32; -fx-text-fill: white; -fx-font-weight: bold;"/>
-
-                <!-- Progress Dots -->
-
             </VBox>
         </VBox>
     </StackPane>
@@ -43,8 +36,10 @@
 
         <!-- Header -->
         <VBox spacing="8" alignment="CENTER">
-            <Label text="Welcome back" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
-
+            <Label text="Create an account"
+                   style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
+            <Label text="Sign up to get started!"
+                   style="-fx-font-size: 16; -fx-text-fill: #9ca3af;"/>
         </VBox>
 
         <!-- Form Fields -->
@@ -60,19 +55,20 @@
                              -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
                        maxWidth="400"/>
 
-        <!-- Login Button -->
-        <Button text="Login"
-                onAction="#handleLogin"
+        <!-- Sign up Button -->
+        <Button text="Sign up"
+                onAction="#handleRegister"
                 style="-fx-background-color: #7c3aed; -fx-text-fill: white; -fx-font-weight: bold;
                        -fx-background-radius: 4; -fx-padding: 12 0; -fx-cursor: hand;"
                 maxWidth="400"/>
 
-        <!-- don't have account -->
+        <!-- Already have account -->
         <VBox spacing="8">
-
             <HBox spacing="4" alignment="CENTER">
-                <Label text="Don't have an account?" style="-fx-text-fill: #9ca3af;"/>
-                <Hyperlink text="Sign up" style="-fx-text-fill: #7c3aed;" onAction="#handleSignup"/>
+                <Label text="Already have an account?" style="-fx-text-fill: #9ca3af;"/>
+                <Hyperlink text="Login"
+                           onAction="#handleBackToLogin"
+                           style="-fx-text-fill: #7c3aed;"/>
             </HBox>
         </VBox>
 

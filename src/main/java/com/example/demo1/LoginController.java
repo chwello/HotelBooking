@@ -28,26 +28,8 @@ public class LoginController {
         loadUsers();
     }
 
-    @FXML
-    public void handleRegister(ActionEvent event) {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
 
-        if (username.isEmpty() || password.isEmpty()) {
-            showAlert("Registration Error", "Username and password cannot be empty!", Alert.AlertType.ERROR);
-            return;
-        }
 
-        if (users.containsKey(username)) {
-            showAlert("Registration Error", "Username already exists!", Alert.AlertType.ERROR);
-            return;
-        }
-
-        User newUser = new User(username, password);
-        users.put(username, newUser);
-        saveUsers();
-        showAlert("Success", "Registration successful! You can now login.", Alert.AlertType.INFORMATION);
-    }
 
     @FXML
     public void handleLogin(ActionEvent event) {
@@ -123,5 +105,30 @@ public class LoginController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    @FXML
+    public void handleSignup(ActionEvent event) {
+        try {
+            Hyperlink sourceLink = (Hyperlink) event.getSource();
+            Scene currentScene = sourceLink.getScene();
+            Stage stage = (Stage) currentScene.getWindow();
+
+            URL resourceUrl = getClass().getResource("/com/example/demo1/signup.fxml");
+            if (resourceUrl == null) {
+                throw new IOException("signup.fxml not found in resources");
+            }
+
+            FXMLLoader fxmlLoader = new FXMLLoader(resourceUrl);
+            Parent signupRoot = fxmlLoader.load();
+
+            Scene signupScene = new Scene(signupRoot);
+            stage.setScene(signupScene);
+            stage.setTitle("Sign Up");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not load signup page: " + e.getMessage(), Alert.AlertType.ERROR);
+        }
     }
 }
