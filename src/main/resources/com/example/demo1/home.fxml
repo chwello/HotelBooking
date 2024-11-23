@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.demo1.HomeController"
+      style="-fx-font-family: 'Poppins';">
+
+    <!-- Navigation Bar -->
+    <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1A1E43; -fx-padding: 10; -fx-spacing: 20;">
+
+        <ImageView fitWidth="40" fitHeight="40">
+            <Image url="@images/logo.png"/>
+        </ImageView>
+
+        <!-- Logo Section -->
+        <HBox alignment="CENTER" spacing="10">
+            <Label text="HotelGo" style=" -fx-text-fill: #F4F4F4; -fx-font-size: 24; -fx-font-weight: bold; -fx-font-family: 'Poppins';">
+                <font>
+                    <Font name="Poppins Bold" size="24"/>
+                </font>
+            </Label>
+        </HBox>
+
+
+
+        <!-- Menu Items -->
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <Hyperlink text="Hotels" style="-fx-text-fill: #F4F4F4;" onAction="#handleHotelsMenu"/>
+            <Hyperlink text="Bookings" style="-fx-text-fill: #F4F4F4;" onAction="#handleBookingsMenu"/>
+        </HBox>
+
+
+        <!-- Spacer -->
+        <HBox HBox.hgrow="ALWAYS"/>
+
+        <!-- Profile Section -->
+        <HBox alignment="CENTER" spacing="10">
+            <Label fx:id="welcomeLabel" text="Welcome!" styleClass="welcome-label"/>
+            <Button fx:id="logoutButton"
+                    text="Logout"
+                    styleClass="logout-button"
+                    onAction="#handleLogout"/>
+        </HBox>
+    </HBox>
+
+    <!-- Main Content -->
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+        <VBox alignment="TOP_CENTER" spacing="20.0">
+            <!-- Header Container with Background Image -->
+            <StackPane style="-fx-background-color: transparent;">
+                <!-- Background Image -->
+                <ImageView fitWidth="1000" fitHeight="400">
+                    <Image url="@images/header.png"/>
+                </ImageView>
+
+                <!-- Header Text -->
+                <VBox alignment="CENTER" spacing="10">
+                    <!-- Main Heading -->
+                    <Label text="Chase elegance. Reserve your dream stay now."
+                           style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 4, 0.0, 0, 2); -fx-font-family: 'Poppins';"/>
+
+                    <!-- Subheading -->
+                    <Label text="Discover the finest hotels from all over the world."
+                           style="-fx-font-size: 18; -fx-text-fill: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 2, 0.0, 0, 1); -fx-font-family: 'Poppins';"/>
+                </VBox>
+            </StackPane>
+
+            <!-- First Featured Hotels Section -->
+            <VBox alignment="TOP_CENTER" spacing="20.0">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="40.0"/>
+                </padding>
+
+                <!-- Title -->
+                <Label text="Featured Hotels">
+                    <font>
+                        <Font name="Poppins Bold" size="24"/>
+                    </font>
+                </Label>
+
+                <!-- First Hotels List -->
+                <HBox alignment="CENTER" spacing="20">
+                    <!-- Hotel Card 1 -->
+                    <VBox  spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel1.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Luxury Palace Hotel" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="5-star luxury experience" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P2499" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 2 -->
+                    <VBox spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150" style="-fx-background-radius:20">
+                            <Image  url="@images/hotel2.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+
+
+                        <Label text="Seaside Resort" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Beachfront paradise" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P9399" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 3 -->
+                    <VBox  spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel3.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Mountain View Lodge" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Scenic mountain retreat" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P6299" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 4 -->
+                    <VBox spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel4.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="City Center Suites" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Urban luxury living" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P5449" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 5 -->
+                    <VBox spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel5.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Island Escape Villas" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Private island experience" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P9599" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <!-- Second Featured Hotels Section -->
+            <VBox alignment="TOP_CENTER" spacing="20.0">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="40.0"/>
+                </padding>
+
+                <!-- Title -->
+                <Label text="Explore stays in trending destinations">
+                    <font>
+                        <Font name="Poppins Bold" size="24"/>
+                    </font>
+                </Label>
+
+                <!-- Second Hotels List -->
+                <HBox alignment="CENTER" spacing="20">
+                    <!-- Hotel Card 6 -->
+                    <VBox  spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel6.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Mountain Retreat" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Alpine luxury escape" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P8999" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 7 -->
+                    <VBox spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel7.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Urban Oasis" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Downtown sophistication" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P4298" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 8 -->
+                    <VBox  spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel8.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Desert Paradise" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Luxury in the dunes" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P3799" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 9 -->
+                    <VBox  spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel9.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Riverside Inn" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Waterfront comfort" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P2899" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+
+                    <!-- Hotel Card 10 -->
+                    <VBox spacing="5" style="-fx-padding: 10;">
+                        <ImageView fitWidth="200" fitHeight="150">
+                            <Image url="@images/hotel10.jpg"/>
+                            <clip>
+                                <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
+                            </clip>
+                        </ImageView>
+                        <Label text="Forest Lodge" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Label text="Nature's finest retreat" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
+                        <Label text="P3109" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                        <Button text="View Details" onAction="#handleHotelDetails"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </VBox>
+
+
+        <!-- Footer -->
+        <VBox style="-fx-background-color: #1A1E43; -fx-padding: 40 20;">
+            <HBox alignment="CENTER" spacing="80">
+                <!-- Company Info Section -->
+                <VBox spacing="10" minWidth="200">
+                    <Label text="HotelGo" style="-fx-text-fill: #F4F4F4; -fx-font-size: 20; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                    <Label text="Your trusted partner in finding the perfect stay for every journey." wrapText="true" maxWidth="250" style="-fx-text-fill: #B8B8B8; -fx-font-size: 12; -fx-font-family: 'Poppins';"/>
+                </VBox>
+
+                <!-- Quick Links Section -->
+                <VBox spacing="10" minWidth="150">
+                    <Label text="Quick Links" style="-fx-text-fill: #F4F4F4; -fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                    <Hyperlink text="About Us" style="-fx-text-fill: #B8B8B8;" />
+                    <Hyperlink text="Contact" style="-fx-text-fill: #B8B8B8;" />
+                    <Hyperlink text="Terms and Conditions" style="-fx-text-fill: #B8B8B8;" />
+                    <Hyperlink text="Privacy Policy" style="-fx-text-fill: #B8B8B8;" />
+                </VBox>
+
+                <!-- Contact Section -->
+                <VBox spacing="10" minWidth="200">
+                    <Label text="Contact Us" style="-fx-text-fill: #F4F4F4; -fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                    <Label text="Email: support@hotelgo.com" style="-fx-text-fill: #B8B8B8; -fx-font-size: 12; -fx-font-family: 'Poppins';"/>
+                    <Label text="Phone: +1 (555) 123-4567" style="-fx-text-fill: #B8B8B8; -fx-font-size: 12; -fx-font-family: 'Poppins';"/>
+                    <Label text="Address: 123 Hotel Street, City, Country" style="-fx-text-fill: #B8B8B8; -fx-font-size: 12; -fx-font-family: 'Poppins';"/>
+                </VBox>
+
+                <!-- Newsletter Section -->
+                <VBox spacing="10" minWidth="250">
+                    <Label text="Newsletter" style="-fx-text-fill: #F4F4F4; -fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
+                    <Label text="Subscribe to get special offers and updates" wrapText="true" style="-fx-text-fill: #B8B8B8; -fx-font-size: 12; -fx-font-family: 'Poppins';"/>
+                    <HBox spacing="10">
+                        <TextField promptText="Enter your email" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5;"/>
+                        <Button text="Subscribe" style="-fx-background-color: #FEBB02; -fx-text-fill: #1A1E43; -fx-background-radius: 5;"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Copyright Section -->
+            <HBox alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+                <Label text="© 2024 HotelGo. All rights reserved." style="-fx-text-fill: #B8B8B8; -fx-font-size: 12; -fx-font-family: 'Poppins';"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+
+
+
+</VBox>

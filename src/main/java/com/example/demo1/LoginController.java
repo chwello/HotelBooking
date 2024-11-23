@@ -2,8 +2,15 @@ package com.example.demo1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import java.io.*;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginController {
 
@@ -13,16 +20,108 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    private Map<String, User> users = new HashMap<>();
+    private static final String USER_FILE = "users.txt";
+
+    @FXML
+    public void initialize() {
+        loadUsers();
+    }
+
+    @FXML
+    public void handleRegister(ActionEvent event) {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert("Registration Error", "Username and password cannot be empty!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        if (users.containsKey(username)) {
+            showAlert("Registration Error", "Username already exists!", Alert.AlertType.ERROR);
+            return;
+        }
+
+        User newUser = new User(username, password);
+        users.put(username, newUser);
+        saveUsers();
+        showAlert("Success", "Registration successful! You can now login.", Alert.AlertType.INFORMATION);
+    }
+
     @FXML
     public void handleLogin(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // Example logic for authentication
-        if ("admin".equals(username) && "password".equals(password)) {
-            System.out.println("Login successful!");
+        if (users.containsKey(username)) {
+            User user = users.get(username);
+            if (user.getPassword().equals(password)) {
+                try {
+                    Button sourceButton = (Button) event.getSource();
+                    Scene currentScene = sourceButton.getScene();
+                    Stage stage = (Stage) currentScene.getWindow();
+
+                    URL resourceUrl = getClass().getResource("/com/example/demo1/home.fxml");
+                    if (resourceUrl == null) {
+                        throw new IOException("home.fxml not found in resources");
+                    }
+
+                    FXMLLoader fxmlLoader = new FXMLLoader(resourceUrl);
+                    Parent homeRoot = fxmlLoader.load();
+
+                    // Pass the username to HomeController
+                    HomeController homeController = fxmlLoader.getController();
+                    homeController.setUsername(username);
+
+                    Scene homeScene = new Scene(homeRoot);
+                    stage.setScene(homeScene);
+                    stage.setTitle("Home Page - Welcome " + username);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    showAlert("Error", "Could not load home page: " + e.getMessage(), Alert.AlertType.ERROR);
+                }
+            } else {
+                showAlert("Login Failed", "Invalid password.", Alert.AlertType.ERROR);
+            }
         } else {
-            System.out.println("Invalid username or password.");
+            showAlert("Login Failed", "User not found. Please register first.", Alert.AlertType.ERROR);
         }
+    }
+
+    private void loadUsers() {
+        try (BufferedReader reader = new BufferedReader(new FileReader(USER_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    users.put(parts[0], new User(parts[0], parts[1]));
+                }
+            }
+        } catch (IOException e) {
+            // File might not exist yet, which is fine for first run
+            System.out.println("No existing users file found.");
+        }
+    }
+
+    private void saveUsers() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(USER_FILE))) {
+            for (User user : users.values()) {
+                writer.write(user.getUsername() + "," + user.getPassword());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "Could not save user data", Alert.AlertType.ERROR);
+        }
+    }
+
+    private void showAlert(String title, String content, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
