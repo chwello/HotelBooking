@@ -2,12 +2,14 @@ package com.example.demo1;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
 public class HomeController {
@@ -71,6 +73,32 @@ public class HomeController {
         alert.setHeaderText(null);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void handleHotelDetails(MouseEvent event) {
+        try {
+            // Get the clicked VBox and its hotel ID
+            Node source = (Node) event.getSource();
+            String hotelId = (String) source.getUserData();
+
+            // Load the hotel details FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hotelDetails.fxml"));
+            Parent root = loader.load();
+
+            // Get the controller and set the hotel data
+            HotelDetails detailsController = loader.getController();
+            detailsController.setHotelData(hotelId);
+
+            // Create new scene and show it
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

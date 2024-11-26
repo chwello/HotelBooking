@@ -8,8 +8,9 @@
 <?import javafx.scene.shape.Rectangle?>
 
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
+<VBox alignment="TOP_CENTER" spacing="20.0"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.demo1.HomeController"
       style="-fx-font-family: 'Poppins';">
 
@@ -120,6 +121,7 @@
 
             <!-- First Featured Hotels Section -->
             <VBox alignment="TOP_CENTER" spacing="20.0">
+
                 <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="40.0"/>
                 </padding>
@@ -134,7 +136,7 @@
                 <!-- Hotels List -->
                 <HBox alignment="CENTER" spacing="20">
                     <!-- Hotel Card 1 -->
-                    <VBox spacing="5" style="-fx-padding: 10;">
+                    <VBox spacing="5" style="-fx-padding: 10;" onMouseClicked="#handleHotelDetails" userData="luxury-palace">
                         <ImageView fitWidth="200" fitHeight="150">
                             <Image url="@images/hotel1.jpg"/>
                             <clip>
@@ -144,12 +146,11 @@
                         <Label text="Luxury Palace Hotel" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="5-star luxury experience" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P2499" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-
                     </VBox>
 
                     <!-- Hotel Card 2 -->
-                    <VBox spacing="5" style="-fx-padding: 10;">
-                        <ImageView fitWidth="200" fitHeight="150" style="-fx-background-radius:20">
+                    <VBox spacing="5" style="-fx-padding: 10;" onMouseClicked="#handleHotelDetails" userData="seaside-resort">
+                        <ImageView fitWidth="200" fitHeight="150">
                             <Image url="@images/hotel2.jpg"/>
                             <clip>
                                 <Rectangle width="200" height="150" arcWidth="20" arcHeight="20"/>
@@ -158,11 +159,10 @@
                         <Label text="Seaside Resort" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Beachfront paradise" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P9399" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-
                     </VBox>
 
                     <!-- Hotel Card 3 -->
-                    <VBox spacing="5" style="-fx-padding: 10;">
+                    <VBox spacing="5" style="-fx-padding: 10;" onMouseClicked="#handleHotelDetails" userData="mountain-view">
                         <ImageView fitWidth="200" fitHeight="150">
                             <Image url="@images/hotel3.jpg"/>
                             <clip>
@@ -172,11 +172,10 @@
                         <Label text="Mountain View Lodge" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Scenic mountain retreat" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P6299" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-
                     </VBox>
 
                     <!-- Hotel Card 4 -->
-                    <VBox spacing="5" style="-fx-padding: 10;">
+                    <VBox spacing="5" style="-fx-padding: 10;" onMouseClicked="#handleHotelDetails" userData="city-center">
                         <ImageView fitWidth="200" fitHeight="150">
                             <Image url="@images/hotel4.jpg"/>
                             <clip>
@@ -186,11 +185,10 @@
                         <Label text="City Center Suites" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Urban luxury living" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P5449" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-
                     </VBox>
 
                     <!-- Hotel Card 5 -->
-                    <VBox spacing="5" style="-fx-padding: 10;">
+                    <VBox spacing="5" style="-fx-padding: 10;" onMouseClicked="#handleHotelDetails" userData="island-escape">
                         <ImageView fitWidth="200" fitHeight="150">
                             <Image url="@images/hotel5.jpg"/>
                             <clip>
@@ -200,7 +198,6 @@
                         <Label text="Island Escape Villas" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Private island experience" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P9599" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-
                     </VBox>
                 </HBox>
             </VBox>
