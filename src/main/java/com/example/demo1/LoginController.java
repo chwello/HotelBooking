@@ -20,7 +20,7 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-    private Map<String, User> users = new HashMap<>();
+    private final Map<String, User> users = new HashMap<>();
     private static final String USER_FILE = "users.txt";
 
     @FXML

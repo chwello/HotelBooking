@@ -49,9 +49,7 @@ public class HomeController {
     private void handleHotelDetails() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Hotel Details");
-        alert.setHeaderText(null);
-        alert.setContentText("Hotel details functionality coming soon!");
-        alert.showAndWait();
+
     }
 
     @FXML

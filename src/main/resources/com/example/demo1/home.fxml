@@ -5,10 +5,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.Rectangle?>
 
-<?import javafx.scene.shape.SVGPath?>
+
 <VBox xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo1.HomeController"
@@ -46,15 +45,21 @@
                     styleClass="logout-button"
                     onAction="#handleLogout"/>
         </HBox>
+
     </HBox>
 
+
+
+
+
+
     <!-- Main Content -->
-    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" >
         <VBox alignment="TOP_CENTER" spacing="20.0">
             <!-- Header Container with Background Image -->
             <StackPane style="-fx-background-color: transparent;">
                 <!-- Background Image -->
-                <ImageView fitWidth="1000" fitHeight="400">
+                <ImageView fitWidth="1200" fitHeight="300" preserveRatio="false">
                     <Image url="@images/header.png"/>
                 </ImageView>
 
@@ -67,7 +72,49 @@
                 </VBox>
             </StackPane>
 
+            <HBox style="-fx-background-color: #E31837; -fx-padding: 20; -fx-spacing: 20;">
+                <!-- Left side heading -->
+                <VBox>
+                    <Label text="Find and book your&#10;perfect stay"
+                           style="-fx-font-size: 24; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </VBox>
 
+                <!-- Cards container -->
+                <HBox spacing="20">
+                    <!-- Card 1 -->
+                    <VBox style="-fx-background-color: #AA1428; -fx-padding: 15;
+                    -fx-background-radius: 8;" prefWidth="300">
+                        <ImageView>
+
+                        </ImageView>
+                        <Label text="Earn rewards on every&#10;night you stay"
+                               style="-fx-text-fill: white; -fx-font-size: 16;"
+                               wrapText="true"/>
+                    </VBox>
+
+                    <!-- Card 2 -->
+                    <VBox style="-fx-background-color: #AA1428; -fx-padding: 15;
+                    -fx-background-radius: 8;" prefWidth="300">
+                        <ImageView>
+
+                        </ImageView>
+                        <Label text="Save more with&#10;Member Prices"
+                               style="-fx-text-fill: white; -fx-font-size: 16;"
+                               wrapText="true"/>
+                    </VBox>
+
+                    <!-- Card 3 -->
+                    <VBox style="-fx-background-color: #AA1428; -fx-padding: 15;
+                    -fx-background-radius: 8;" prefWidth="300">
+                        <ImageView>
+
+                        </ImageView>
+                        <Label text="Free cancellation&#10;options if plans change"
+                               style="-fx-text-fill: white; -fx-font-size: 16;"
+                               wrapText="true"/>
+                    </VBox>
+                </HBox>
+            </HBox>
 
 
 
@@ -97,7 +144,7 @@
                         <Label text="Luxury Palace Hotel" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="5-star luxury experience" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P2499" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 2 -->
@@ -111,7 +158,7 @@
                         <Label text="Seaside Resort" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Beachfront paradise" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P9399" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 3 -->
@@ -125,7 +172,7 @@
                         <Label text="Mountain View Lodge" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Scenic mountain retreat" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P6299" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 4 -->
@@ -139,7 +186,7 @@
                         <Label text="City Center Suites" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Urban luxury living" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P5449" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 5 -->
@@ -153,7 +200,7 @@
                         <Label text="Island Escape Villas" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Private island experience" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P9599" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
                 </HBox>
             </VBox>
@@ -184,7 +231,7 @@
                         <Label text="Mountain Retreat" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Alpine luxury escape" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P8999" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 7 -->
@@ -198,7 +245,7 @@
                         <Label text="Urban Oasis" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Downtown sophistication" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P4298" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 8 -->
@@ -212,7 +259,7 @@
                         <Label text="Desert Paradise" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Luxury in the dunes" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P3799" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 9 -->
@@ -226,7 +273,7 @@
                         <Label text="Riverside Inn" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Waterfront comfort" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P2899" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
                     <!-- Hotel Card 10 -->
@@ -240,7 +287,7 @@
                         <Label text="Forest Lodge" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
                         <Label text="Nature's finest retreat" style="-fx-font-size: 14; -fx-text-fill: #666666; -fx-font-family: 'Poppins';"/>
                         <Label text="P3109" style="-fx-text-fill: #FEBB02; -fx-font-size: 14; -fx-font-weight: bold; -fx-font-family: 'Poppins';"/>
-                        <Button text="View Details" onAction="#handleHotelDetails"/>
+
                     </VBox>
 
 
