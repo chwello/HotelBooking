@@ -7,7 +7,8 @@
 
 
 <?import javafx.scene.shape.Rectangle?>
-<HBox xmlns="http://javafx.com/javafx/17"
+<HBox  maxWidth="Infinity" maxHeight="Infinity"
+        xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo1.LoginController"
       style="-fx-background-color: white;">

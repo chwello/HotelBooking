@@ -284,10 +284,15 @@ public class HotelDetails {
 
     @FXML
     private void handleBooking() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Room Availability");
-        alert.setContentText("Please select a room type below to proceed with booking.");
-        alert.showAndWait();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo1/confirmBooking.fxml"));
+            Scene currentScene = hotelNameLabel.getScene();
+            Scene newScene = new Scene(loader.load());
+            Stage stage = (Stage) currentScene.getWindow();
+            stage.setScene(newScene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

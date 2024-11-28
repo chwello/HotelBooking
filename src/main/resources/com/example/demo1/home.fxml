@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 
 
-<VBox alignment="TOP_CENTER" spacing="20.0"
+<VBox maxWidth="Infinity" maxHeight="Infinity"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.demo1.HomeController"

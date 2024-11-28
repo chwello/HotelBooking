@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
+<VBox maxWidth="Infinity" maxHeight="Infinity" prefHeight="1000.0" prefWidth="1400.0"
+        xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.demo1.HotelDetails"
       stylesheets="@styles.css">
 
@@ -87,7 +88,7 @@
 
                     <!-- Book Now Button -->
                     <Button text="Book Now"
-                            onAction="#handleBooking"
+                            onMouseClicked="#handleBooking"
                             style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;"/>
 
 

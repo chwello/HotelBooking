@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 
-<HBox xmlns="http://javafx.com/javafx/17"
+<HBox maxWidth="Infinity" maxHeight="Infinity" prefHeight="1000.0" prefWidth="1400.0"
+        xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo1.Signup"
       style="-fx-background-color: white;">
