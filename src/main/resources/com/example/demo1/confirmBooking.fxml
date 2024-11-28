@@ -1,23 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 
 <VBox maxWidth="Infinity" maxHeight="Infinity" prefHeight="1000.0" prefWidth="1400.0"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.example.demo1.BookingController"
-      stylesheets="@styles.css">
+      stylesheets="@styles.css" spacing="20" style="-fx-padding: 20; -fx-background-color: #f9f9f9;">
 
-    <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1A1E43; -fx-padding: 10; -fx-spacing: 20;">
-
-
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" style="-fx-background-color: #1A1E43; -fx-padding: 10;">
         <Label text="Confirm Booking" style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;"/>
     </HBox>
 
-    <VBox spacing="20" style="-fx-padding: 20;">
-        <Label text="Confirm Your Booking" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
-    </VBox>
+    <!-- Main Content -->
+    <HBox spacing="20" alignment="TOP_LEFT">
+
+        <!-- Left Section -->
+        <VBox spacing="20" style="-fx-padding: 10;" prefWidth="900">
+
+            <!-- Box: Your Details -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-color: #d3d3d3; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="Your details" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="First name :"/>
+                    <TextField GridPane.columnIndex="1"/>
+                    <Label text="Last name :" GridPane.rowIndex="1"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Phone Number :" GridPane.rowIndex="2"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Email Address :" GridPane.rowIndex="3"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Salutation:" GridPane.rowIndex="4"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="Special requests to hotel:" GridPane.rowIndex="5"/>
+                    <TextArea GridPane.columnIndex="1" GridPane.rowIndex="5" prefRowCount="3"/>
+                </GridPane>
+            </VBox>
+
+            <!-- Box: Payment Information -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-color: #d3d3d3; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="Payment Information" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="Name on card:"/>
+                    <TextField GridPane.columnIndex="1"/>
+                    <Label text="Credit Card Number :" GridPane.rowIndex="1"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Expiration Date :" GridPane.rowIndex="2"/>
+                    <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ComboBox prefWidth="100"/>
+                        <ComboBox prefWidth="100"/>
+                    </HBox>
+                    <Label text="CVV/CVC :" GridPane.rowIndex="3"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                </GridPane>
+            </VBox>
+
+            <!-- Box: Billing Address -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-color: #d3d3d3; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="Billing Address" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="10">
+                    <Label text="First name:"/>
+                    <TextField GridPane.columnIndex="1"/>
+                    <Label text="Last name:" GridPane.rowIndex="1"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Phone Number:" GridPane.rowIndex="2"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Email Address:" GridPane.rowIndex="3"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Country:" GridPane.rowIndex="4"/>
+                    <ComboBox GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="State/Province:" GridPane.rowIndex="5"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <Label text="Postal (ZIP) Code:" GridPane.rowIndex="6"/>
+                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                </GridPane>
+            </VBox>
+
+        </VBox>
+
+        <!-- Right Section -->
+        <VBox spacing="20" prefWidth="400">
+
+            <!-- Box: Hotel Information -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-color: #d3d3d3; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="The Fullerton Hotel Singapore" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <Label text="1 Fullerton Square, 049178 Singapore" style="-fx-font-size: 12;"/>
+                <!-- Add hotel features/icons here -->
+            </VBox>
+
+            <!-- Box: Booking Details -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-color: #d3d3d3; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="Your booking details" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <!-- Add booking details here -->
+            </VBox>
+
+            <!-- Box: Pricing Summary -->
+            <VBox spacing="10" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-color: #d3d3d3; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <Label text="Pricing Summary" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <!-- Add pricing details here -->
+            </VBox>
+
+        </VBox>
+
+    </HBox>
+
+    <!-- Footer -->
+    <HBox alignment="CENTER" style="-fx-padding: 20;">
+        <Button text="Confirm and Proceed" style="-fx-background-color: #1A1E43; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold;"/>
+    </HBox>
 
 </VBox>
