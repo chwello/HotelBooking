@@ -35,36 +35,32 @@
                             </columnConstraints>
 
                             <!-- First Name -->
-                            <Label text="First name" style="-fx-text-fill: #4a5568; -fx-font-size: 14;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-                            <VBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="1">
-                                <TextField promptText="Enter your first name" prefHeight="40"
-                                           style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
-                                <Label text="Required field" style="-fx-text-fill: #e53e3e; -fx-font-size: 12;" visible="false"/>
-                            </VBox>
+                            <Label text="First name" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
+                                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <TextField fx:id="firstNameField" promptText="Enter your first name"
+                                       prefHeight="40" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                       style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
 
                             <!-- Last Name -->
-                            <Label text="Last name" style="-fx-text-fill: #4a5568; -fx-font-size: 14;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-                            <VBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="1">
-                                <TextField promptText="Enter your last name" prefHeight="40"
-                                           style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
-                                <Label text="Required field" style="-fx-text-fill: #e53e3e; -fx-font-size: 12;" visible="false"/>
-                            </VBox>
+                            <Label text="Last name" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <TextField fx:id="lastNameField" promptText="Enter your last name"
+                                       prefHeight="40" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                       style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
 
                             <!-- Phone Number -->
-                            <Label text="Phone number" style="-fx-text-fill: #4a5568; -fx-font-size: 14;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                            <VBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="1">
-                                <TextField promptText="Enter your phone number" prefHeight="40"
-                                           style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
-                                <Label text="Required field" style="-fx-text-fill: #e53e3e; -fx-font-size: 12;" visible="false"/>
-                            </VBox>
+                            <Label text="Phone number" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                            <TextField fx:id="phoneField" promptText="Enter your phone number"
+                                       prefHeight="40" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                       style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
 
                             <!-- Email -->
-                            <Label text="Email address" style="-fx-text-fill: #4a5568; -fx-font-size: 14;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-                            <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="1">
-                                <TextField promptText="Enter your email address" prefHeight="40"
-                                           style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
-                                <Label text="Required field" style="-fx-text-fill: #e53e3e; -fx-font-size: 12;" visible="false"/>
-                            </VBox>
+                            <Label text="Email address" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
+                                   GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                            <TextField fx:id="emailField" promptText="Enter your email address"
+                                       prefHeight="40" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                       style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
 
                             <!-- Special Requests -->
                             <Label text="Special requests" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
@@ -73,12 +69,10 @@
                                     <Insets top="5"/>
                                 </padding>
                             </Label>
-                            <VBox spacing="5" GridPane.rowIndex="4" GridPane.columnIndex="1">
-                                <TextArea prefRowCount="3" wrapText="true"
-                                          promptText="Enter any special requests for the hotel"
-                                          style="-fx-font-size: 14; -fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
-                                <Label text="Optional" style="-fx-text-fill: #718096; -fx-font-size: 12;"/>
-                            </VBox>
+                            <TextArea fx:id="specialRequestsField" prefRowCount="3" wrapText="true"
+                                      promptText="Enter any special requests for the hotel"
+                                      GridPane.rowIndex="4" GridPane.columnIndex="1"
+                                      style="-fx-font-size: 14; -fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
                         </GridPane>
                     </VBox>
 
@@ -153,8 +147,11 @@
     </ScrollPane>
 
     <!-- Footer -->
+    <!-- Footer -->
     <HBox alignment="CENTER" style="-fx-padding: 20; -fx-background-color: white; -fx-border-color: #e8e8e8; -fx-border-width: 1 0 0 0;">
-        <Button text="Confirm Booking"
+        <Button fx:id="confirmButton"
+                text="Confirm Booking"
+                onAction="#handleConfirmBooking"
                 style="-fx-background-color: #1A1E43; -fx-text-fill: white; -fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 15 40; -fx-background-radius: 6; -fx-cursor: hand;"/>
     </HBox>
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox maxWidth="Infinity" maxHeight="Infinity" prefWidth="1400" prefHeight="1000"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.demo1.BookingSuccess"
+      style="-fx-background-color: #f5f7fa;">
+
+    <!-- Header -->
+    <HBox alignment="CENTER" style="-fx-background-color: #1A1E43; -fx-padding: 20;">
+        <Label text="Booking Confirmed!" style="-fx-text-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Main Content with ScrollPane -->
+    <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" style="-fx-background-color: transparent;">
+        <VBox alignment="TOP_CENTER" style="-fx-padding: 30;">
+            <VBox spacing="30" maxWidth="800" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 8;">
+                <!-- Success Message -->
+                <VBox alignment="CENTER" spacing="10">
+                    <Label text="Thank you for your booking!" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+                    <Label text="Your reservation has been confirmed. A confirmation email will be sent shortly."
+                           style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+                </VBox>
+
+                <!-- Booking Details -->
+                <VBox spacing="20">
+                    <!-- Hotel Information -->
+                    <HBox spacing="20">
+                        <ImageView fx:id="hotelImageView" fitWidth="200" fitHeight="150" preserveRatio="true"/>
+                        <VBox spacing="10">
+                            <Label fx:id="hotelNameLabel" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                            <Label fx:id="hotelAddressLabel" style="-fx-font-size: 14; -fx-text-fill: #666;"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Stay Details -->
+                    <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #f8fafc; -fx-background-radius: 8;">
+                        <Label text="Booking Details" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Label fx:id="roomTypeLabel"/>
+                        <Label fx:id="totalPriceLabel"/>
+                    </VBox>
+
+                    <!-- Guest Information -->
+                    <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #f8fafc; -fx-background-radius: 8;">
+                        <Label text="Guest Information" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Label fx:id="guestNameLabel"/>
+                        <Label fx:id="guestPhoneLabel"/>
+                        <Label fx:id="guestEmailLabel"/>
+                    </VBox>
+                </VBox>
+
+                <!-- Next Steps -->
+                <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #f8fafc; -fx-background-radius: 8;">
+                    <Label text="What's Next?" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                    <Label text="• Check your email for booking confirmation" wrapText="true"/>
+                    <Label text="• Present your booking ID upon check-in" wrapText="true"/>
+                    <Label text="• Contact the hotel directly for any special requests" wrapText="true"/>
+                </VBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>
