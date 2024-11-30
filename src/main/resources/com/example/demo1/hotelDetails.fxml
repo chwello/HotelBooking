@@ -6,8 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxWidth="Infinity" maxHeight="Infinity" prefHeight="1000.0" prefWidth="1400.0"
-        xmlns:fx="http://javafx.com/fxml"
+<VBox maxWidth="Infinity" maxHeight="Infinity" prefWidth="1400" prefHeight="1000"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.demo1.HotelDetails"
       stylesheets="@styles.css">
 
@@ -20,7 +20,7 @@
     </HBox>
 
     <!-- Scrollable Content -->
-    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+    <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" fitToHeight="true" style="-fx-background-color: transparent;">
         <VBox spacing="20">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
@@ -85,12 +85,6 @@
                             <Insets top="10"/>
                         </padding>
                     </VBox>
-
-                    <!-- Book Now Button -->
-                    <Button text="Book Now"
-                            onMouseClicked="#handleBooking"
-                            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14; -fx-padding: 10 20;"/>
-
 
                 </VBox>
             </HBox>

@@ -72,8 +72,27 @@ public class HotelDetails {
                 locationLabel.setText("Boracay Island, Philippines");
                 hotelImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/demo1/images/hotel2.jpg"))));
 
+                overviewLabel.setText("Seaside Resort is your gateway to paradise on the stunning shores of Boracay Island. Nestled amidst the pristine white sands and crystal-clear waters, this luxurious resort offers breathtaking ocean views, world-class amenities, and unparalleled hospitality.");
                 // Set overview and other data...
+                setAmenities(new String[]{  // Changed from amenitiesTags to setAmenities
+                        "Rooftop Infinity Pool",
+                        "Michelin-Starred Restaurants",
+                        "State-of-the-Art Fitness Center",
+                        "24/7 Concierge Service",
+                        "Exclusive Club Lounge Access",
+                        "Luxury Spa Services",
+                        "Business Center",
+                        "Conference Facilities",
+                        "Valet Parking",
+                        "Airport Transfer Service"
+                });
 
+                setHighlights(new String[]{
+                        "Location rating score of 9.6!",
+                        "Dining experience rating of 9.8",
+                        "Service excellence rating of 9.7",
+                        "Amenities rating of 9.5"
+                });
                 // Setup rooms specific to Seaside Resort
                 setupRoomsForSeasideResort();
                 setupRoomsForLuxuryPalace();
@@ -83,8 +102,28 @@ public class HotelDetails {
                 locationLabel.setText("Baguio City, Philippines");
                 hotelImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/demo1/images/hotel3.jpg"))));
 
+                overviewLabel.setText("Escape to the cool mountain breeze and picturesque landscapes of Mountain View Lodge. " +
+                        "Located in the heart of Baguio City, the Summer Capital of the Philippines, this charming lodge offers a tranquil retreat surrounded by lush pine trees and breathtaking mountain vistas.");
                 // Set overview and other data...
+                setAmenities(new String[]{  // Changed from amenitiesTags to setAmenities
+                        "Rooftop Infinity Pool",
+                        "Michelin-Starred Restaurants",
+                        "State-of-the-Art Fitness Center",
+                        "24/7 Concierge Service",
+                        "Exclusive Club Lounge Access",
+                        "Luxury Spa Services",
+                        "Business Center",
+                        "Conference Facilities",
+                        "Valet Parking",
+                        "Airport Transfer Service"
+                });
 
+                setHighlights(new String[]{
+                        "Location rating score of 9.6!",
+                        "Dining experience rating of 9.8",
+                        "Service excellence rating of 9.7",
+                        "Amenities rating of 9.5"
+                });
                 // Setup rooms specific to Mountain View
                 setupRoomsForMountainView();
             }
@@ -156,7 +195,7 @@ public class HotelDetails {
             amenityBox.setPrefWidth(200);
             amenityBox.setAlignment(Pos.CENTER_LEFT);
 
-            // Create icon (you can use • as a simple bullet point)
+
             Label iconLabel = new Label("•");
             iconLabel.setStyle("-fx-text-fill: #1a73e8; -fx-font-size: 18;");
 
@@ -274,12 +313,37 @@ public class HotelDetails {
     }
 
     private void proceedToBooking(String roomType, double price) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Booking Confirmation");
-        alert.setHeaderText("Thank you for your selection!");
-        alert.setContentText(String.format("Your booking for %s (Price: $%.2f) is being processed.",
-                roomType, price));
-        alert.showAndWait();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo1/confirmBooking.fxml"));
+            Parent root = loader.load();
+            BookingController controller = loader.getController();
+
+            // Get the hotel ID based on the hotel name
+            String currentHotelId;
+            if (hotelNameLabel.getText().contains("Luxury Palace")) {
+                currentHotelId = "luxury-palace";
+            } else if (hotelNameLabel.getText().contains("Seaside Resort")) {
+                currentHotelId = "seaside-resort";
+            } else if (hotelNameLabel.getText().contains("Mountain View")) {
+                currentHotelId = "mountain-view";
+            } else {
+                currentHotelId = "luxury-palace"; // default
+            }
+
+            controller.setBookingDetails(
+                    currentHotelId,
+                    hotelNameLabel.getText(),
+                    locationLabel.getText(),
+                    roomType,
+                    price,
+                    1  // Default to 1 night, can be modified based on user selection
+            );
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) hotelNameLabel.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

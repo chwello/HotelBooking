@@ -8,30 +8,25 @@
 
 <?import javafx.scene.shape.Rectangle?>
 <HBox  maxWidth="Infinity" maxHeight="Infinity"
-        xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.demo1.LoginController"
-      style="-fx-background-color: white;">
+       xmlns="http://javafx.com/javafx/17"
+       xmlns:fx="http://javafx.com/fxml/1"
+       fx:controller="com.example.demo1.LoginController"
+       style="-fx-background-color: white;">
 
     <!-- Left Section with Image -->
     <StackPane HBox.hgrow="ALWAYS">
         <ImageView fitWidth="500" fitHeight="600">
             <Image url="@images/background.jpg"/>
-
         </ImageView>
 
         <!-- Purple Overlay with Content -->
         <VBox style="-fx-background-color: rgba(88, 28, 135, 0.5);" spacing="20">
-
             <!-- Center Content -->
             <VBox alignment="CENTER" VBox.vgrow="ALWAYS" spacing="10">
                 <Label text="Capturing Moments,"
                        style="-fx-font-size: 32; -fx-text-fill: white; -fx-font-weight: bold;"/>
                 <Label text="Creating Memories"
                        style="-fx-font-size: 32; -fx-text-fill: white; -fx-font-weight: bold;"/>
-
-                <!-- Progress Dots -->
-
             </VBox>
         </VBox>
     </StackPane>
@@ -45,32 +40,30 @@
         <!-- Header -->
         <VBox spacing="8" alignment="CENTER">
             <Label text="Welcome back" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: white;"/>
-
         </VBox>
 
         <!-- Form Fields -->
         <TextField fx:id="usernameField"
                    promptText="Email"
                    style="-fx-background-color: #1e1b4b; -fx-border-color: #4b5563; -fx-border-radius: 4;
-                         -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
-                   maxWidth="400"/>
+                         -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af; -fx-padding: 12 16;"
+                   prefWidth="400" prefHeight="45"/>
 
         <PasswordField fx:id="passwordField"
                        promptText="Password"
                        style="-fx-background-color: #1e1b4b; -fx-border-color: #4b5563; -fx-border-radius: 4;
-                             -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af;"
-                       maxWidth="400"/>
+                             -fx-text-fill: white; -fx-prompt-text-fill: #9ca3af; -fx-padding: 12 16;"
+                       prefWidth="400" prefHeight="45"/>
 
         <!-- Login Button -->
         <Button text="Login"
                 onAction="#handleLogin"
                 style="-fx-background-color: #7c3aed; -fx-text-fill: white; -fx-font-weight: bold;
-                       -fx-background-radius: 4; -fx-padding: 12 0; -fx-cursor: hand;"
-                maxWidth="400"/>
+                       -fx-background-radius: 4; -fx-cursor: hand;"
+                prefWidth="400" prefHeight="45"/>
 
         <!-- don't have account -->
         <VBox spacing="8">
-
             <HBox spacing="4" alignment="CENTER">
                 <Label text="Don't have an account?" style="-fx-text-fill: #9ca3af;"/>
                 <Hyperlink text="Sign up" style="-fx-text-fill: #7c3aed;" onAction="#handleSignup"/>
@@ -84,10 +77,12 @@
         <HBox spacing="16" alignment="CENTER">
             <Button text="Google"
                     style="-fx-background-color: transparent; -fx-border-color: #4b5563;
-                           -fx-border-radius: 4; -fx-text-fill: white; -fx-min-width: 120;"/>
+                           -fx-border-radius: 4; -fx-text-fill: white; -fx-padding: 12 16;"
+                    prefWidth="120" prefHeight="45"/>
             <Button text="Apple"
                     style="-fx-background-color: transparent; -fx-border-color: #4b5563;
-                           -fx-border-radius: 4; -fx-text-fill: white; -fx-min-width: 120;"/>
+                           -fx-border-radius: 4; -fx-text-fill: white; -fx-padding: 12 16;"
+                    prefWidth="120" prefHeight="45"/>
         </HBox>
     </VBox>
 </HBox>
