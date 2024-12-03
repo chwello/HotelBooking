@@ -1,4 +1,3 @@
-
 package com.example.demo1;
 
 import javafx.fxml.FXML;
@@ -12,6 +11,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class HotelDetails {
@@ -22,6 +23,9 @@ public class HotelDetails {
     @FXML private FlowPane amenitiesContainer;
     @FXML private VBox highlightsContainer;
     @FXML private VBox roomsContainer;
+    @FXML private DatePicker checkInDatePicker;
+    @FXML private DatePicker checkOutDatePicker;  // Added this line
+
 
     @FXML
     public void initialize() {
@@ -72,7 +76,9 @@ public class HotelDetails {
                 locationLabel.setText("Boracay Island, Philippines");
                 hotelImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/demo1/images/hotel2.jpg"))));
 
-                overviewLabel.setText("Seaside Resort is your gateway to paradise on the stunning shores of Boracay Island. Nestled amidst the pristine white sands and crystal-clear waters, this luxurious resort offers breathtaking ocean views, world-class amenities, and unparalleled hospitality.");
+                overviewLabel.setText("Seaside Resort is your gateway to paradise on the stunning shores of Boracay Island. " +
+                        "Nestled amidst the pristine white sands and crystal-clear waters, this luxurious resort offers " +
+                        "breathtaking ocean views, world-class amenities, and unparalleled hospitality.");
                 // Set overview and other data...
                 setAmenities(new String[]{  // Changed from amenitiesTags to setAmenities
                         "Rooftop Infinity Pool",
@@ -103,7 +109,9 @@ public class HotelDetails {
                 hotelImage.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/example/demo1/images/hotel3.jpg"))));
 
                 overviewLabel.setText("Escape to the cool mountain breeze and picturesque landscapes of Mountain View Lodge. " +
-                        "Located in the heart of Baguio City, the Summer Capital of the Philippines, this charming lodge offers a tranquil retreat surrounded by lush pine trees and breathtaking mountain vistas.");
+                        "Located in the heart of Baguio City, the Summer Capital of the Philippines, " +
+                        "this charming lodge offers a tranquil retreat surrounded by lush pine trees " +
+                        "and breathtaking mountain vistas.");
                 // Set overview and other data...
                 setAmenities(new String[]{  // Changed from amenitiesTags to setAmenities
                         "Rooftop Infinity Pool",
@@ -330,14 +338,26 @@ public class HotelDetails {
                 currentHotelId = "luxury-palace"; // default
             }
 
+            // Get selected dates from HotelDetails
+            LocalDate selectedCheckIn = checkInDatePicker.getValue();
+            LocalDate selectedCheckOut = checkOutDatePicker.getValue();
+
+            // Calculate number of nights
+            long nights = ChronoUnit.DAYS.between(selectedCheckIn, selectedCheckOut);
+            if (nights < 1) nights = 1;
+
+            // Initialize the booking controller with all details including dates
             controller.setBookingDetails(
                     currentHotelId,
                     hotelNameLabel.getText(),
                     locationLabel.getText(),
                     roomType,
                     price,
-                    1  // Default to 1 night, can be modified based on user selection
+                    (int)nights,
+                    selectedCheckIn,
+                    selectedCheckOut  // Added check-out date
             );
+
             Scene scene = new Scene(root);
             Stage stage = (Stage) hotelNameLabel.getScene().getWindow();
             stage.setScene(scene);

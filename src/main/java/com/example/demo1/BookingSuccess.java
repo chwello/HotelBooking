@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+
+import java.time.LocalDate;
+
 
 public class BookingSuccess {
     @FXML private ImageView hotelImageView;
@@ -15,7 +17,17 @@ public class BookingSuccess {
     @FXML private Label guestNameLabel;
     @FXML private Label guestEmailLabel;
     @FXML private Label guestPhoneLabel;
-    @FXML private VBox bookingDetailsBox;
+
+    @FXML private Label checkInDateLabel;
+    @FXML private Label checkOutDateLabel;
+    @FXML private Label numberOfNightsLabel;
+
+    public void setDates(LocalDate checkIn, LocalDate checkOut, int nights) {
+        checkInDateLabel.setText("Check-in: " + checkIn.toString());
+        checkOutDateLabel.setText("Check-out: " + checkOut.toString());
+        numberOfNightsLabel.setText("Duration: " + nights + (nights > 1 ? " nights" : " night"));
+    }
+
 
     @FXML
     public void initialize() {
@@ -42,4 +54,6 @@ public class BookingSuccess {
         guestPhoneLabel.setText(phone);
         guestEmailLabel.setText(email);
     }
+
+
 }

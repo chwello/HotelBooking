@@ -13,20 +13,21 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.time.format.DateTimeFormatter;
 
 public class BookingController {
     @FXML private VBox bookingDetailsBox;
     @FXML private Label hotelNameLabel;
     @FXML private Label hotelAddressLabel;
-    @FXML private Label roomTypeLabel;
-    @FXML private Label priceLabel;
-    @FXML private Label totalLabel;
     @FXML private ImageView hotelImageView;
-
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
     @FXML private TextField phoneField;
     @FXML private TextField emailField;
+    @FXML private DatePicker checkInDatePicker;
+    @FXML private DatePicker checkOutDatePicker;
     @FXML private TextArea specialRequestsField;
 
     private String roomType;
@@ -37,36 +38,82 @@ public class BookingController {
     private String imagePath;
     private double totalAmount;
     private Image hotelImage;
+    private int numberOfNights;
+    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+    @FXML
+    private void initialize() {
+        // Set default values and validation
+        checkInDatePicker.setValue(LocalDate.now());
+        checkOutDatePicker.setValue(LocalDate.now().plusDays(1));
+
+        // Prevent past dates for check-in
+        checkInDatePicker.setDayCellFactory(dp -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                setDisable(empty || date.compareTo(LocalDate.now()) < 0);
+            }
+        });
+
+        // Prevent dates before check-in for check-out
+        checkOutDatePicker.setDayCellFactory(dp -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate checkIn = checkInDatePicker.getValue();
+                setDisable(empty || (checkIn != null && date.compareTo(checkIn) <= 0));
+            }
+        });
+
+        // Add listeners for date changes
+        checkInDatePicker.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                LocalDate checkOut = checkOutDatePicker.getValue();
+                if (checkOut == null || checkOut.compareTo(newVal) <= 0) {
+                    checkOutDatePicker.setValue(newVal.plusDays(1));
+                }
+                updateBookingDetails();
+            }
+        });
+
+        checkOutDatePicker.valueProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                LocalDate checkIn = checkInDatePicker.getValue();
+                if (checkIn != null && newVal.compareTo(checkIn) <= 0) {
+                    checkOutDatePicker.setValue(checkIn.plusDays(1));
+                }
+                updateBookingDetails();
+            }
+        });
+    }
 
     @FXML
     private void handleConfirmBooking(ActionEvent event) {
         if (validateForm()) {
             try {
-                // Load the booking success FXML
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo1/bookingSuccess.fxml"));
                 Parent bookingSuccessRoot = loader.load();
 
-                // Get the controller and pass the data
                 BookingSuccess bookingSuccessController = loader.getController();
-
-                // Set hotel details
                 bookingSuccessController.setHotelDetails(hotelName, hotelAddress, hotelImage);
-
-                // Set booking details
                 bookingSuccessController.setBookingDetails(
                         roomType,
                         String.format("P%.2f", totalAmount)
                 );
-
-                // Set guest information
                 bookingSuccessController.setGuestInformation(
                         firstNameField.getText(),
                         lastNameField.getText(),
                         phoneField.getText(),
                         emailField.getText()
                 );
+                // Add dates to booking success
+                bookingSuccessController.setDates(
+                        checkInDatePicker.getValue(),
+                        checkOutDatePicker.getValue(),
+                        numberOfNights
+                );
 
-                // Get the stage and set the new scene
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(bookingSuccessRoot);
                 stage.setScene(scene);
@@ -80,7 +127,8 @@ public class BookingController {
     }
 
     private boolean validateForm() {
-        if (firstNameField == null || lastNameField == null || phoneField == null || emailField == null) {
+        if (firstNameField == null || lastNameField == null || phoneField == null ||
+                emailField == null || checkInDatePicker == null || checkOutDatePicker == null) {
             showError("Error", "Form fields not properly initialized");
             return false;
         }
@@ -91,6 +139,18 @@ public class BookingController {
         if (isFieldEmpty(lastNameField)) errors.append("Last name is required\n");
         if (isFieldEmpty(phoneField)) errors.append("Phone number is required\n");
         if (isFieldEmpty(emailField)) errors.append("Email address is required\n");
+        if (checkInDatePicker.getValue() == null) errors.append("Check-in date is required\n");
+        if (checkOutDatePicker.getValue() == null) errors.append("Check-out date is required\n");
+
+        // Validate dates
+        if (checkInDatePicker.getValue() != null && checkOutDatePicker.getValue() != null) {
+            if (checkInDatePicker.getValue().isBefore(LocalDate.now())) {
+                errors.append("Check-in date cannot be in the past\n");
+            }
+            if (checkOutDatePicker.getValue().compareTo(checkInDatePicker.getValue()) <= 0) {
+                errors.append("Check-out date must be after check-in date\n");
+            }
+        }
 
         if (errors.length() > 0) {
             showError("Validation Error", errors.toString());
@@ -111,12 +171,21 @@ public class BookingController {
         alert.showAndWait();
     }
 
-    public void setBookingDetails(String hotelId, String hotelName, String hotelAddress, String roomType, double price, int nights) {
+    public void setBookingDetails(String hotelId, String hotelName, String hotelAddress,
+                                  String roomType, double price, int nights,
+                                  LocalDate checkInDate, LocalDate checkOutDate) {  // Added checkOutDate parameter
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.hotelAddress = hotelAddress;
         this.roomType = roomType;
         this.roomPrice = price;
+        this.numberOfNights = nights;
+
+        // Set both dates directly from HotelDetails selection
+        if (checkInDatePicker != null && checkOutDatePicker != null) {
+            checkInDatePicker.setValue(checkInDate);
+            checkOutDatePicker.setValue(checkOutDate);
+        }
 
         hotelNameLabel.setText(hotelName);
         hotelAddressLabel.setText(hotelAddress);
@@ -142,14 +211,29 @@ public class BookingController {
     }
 
     private void updateBookingDetails() {
-        double taxRate = 0.12;
-        double taxAmount = roomPrice * taxRate;
-        totalAmount = roomPrice + taxAmount;
+        // Calculate number of nights
+        if (checkInDatePicker.getValue() != null && checkOutDatePicker.getValue() != null) {
+            numberOfNights = (int) ChronoUnit.DAYS.between(
+                    checkInDatePicker.getValue(),
+                    checkOutDatePicker.getValue()
+            );
+        }
 
+        // Calculate prices
+        double taxRate = 0.12;
+        double subtotal = roomPrice * numberOfNights;
+        double taxAmount = subtotal * taxRate;
+        totalAmount = subtotal + taxAmount;
+
+        // Update UI with formatted dates
         bookingDetailsBox.getChildren().clear();
         bookingDetailsBox.getChildren().addAll(
                 createDetailLabel("Room Type", roomType),
                 createDetailLabel("Price per night", String.format("P%.2f", roomPrice)),
+                createDetailLabel("Check-in", checkInDatePicker.getValue().format(dateFormatter)),
+                createDetailLabel("Check-out", checkOutDatePicker.getValue().format(dateFormatter)),
+                createDetailLabel("Number of nights", String.valueOf(numberOfNights)),
+                createDetailLabel("Subtotal", String.format("P%.2f", subtotal)),
                 createDetailLabel("Tax (12%)", String.format("P%.2f", taxAmount)),
                 createDetailLabel("Total price (inc. tax)", String.format("P%.2f", totalAmount))
         );

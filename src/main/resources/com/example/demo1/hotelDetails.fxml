@@ -76,6 +76,28 @@
 
                 <!-- Right Section -->
                 <VBox spacing="15" style="-fx-max-width: 300; -fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8;">
+
+                    <!-- Date Selection Section -->
+                    <VBox spacing="10">
+                        <Label text="Select Dates" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+                        <!-- Check-in Date -->
+                        <VBox spacing="5">
+                            <Label text="Check-in" style="-fx-font-size: 14;"/>
+                            <DatePicker fx:id="checkInDatePicker"
+                                        prefWidth="260"
+                                        style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 4;"/>
+                        </VBox>
+
+                        <!-- Check-out Date -->
+                        <VBox spacing="5">
+                            <Label text="Check-out" style="-fx-font-size: 14;"/>
+                            <DatePicker fx:id="checkOutDatePicker"
+                                        prefWidth="260"
+                                        style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 4;"/>
+                        </VBox>
+                    </VBox>
+
                     <!-- Highlights Title -->
                     <Label text="Highlights" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
 

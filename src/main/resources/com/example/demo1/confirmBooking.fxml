@@ -141,12 +141,41 @@
                         <Label text="Booking Summary" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
                         <!-- Booking details will be added here dynamically -->
                     </VBox>
+
+                    <!-- Replace your existing date picker section in confirmBooking.fxml -->
+                    <VBox fx:id="bookingDetailsBox" spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #e8e8e8; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);">
+                        <Label text="Booking Summary" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+                        <!-- Date Selection -->
+                        <GridPane hgap="10" vgap="10">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="100" />
+                                <ColumnConstraints hgrow="ALWAYS" />
+                            </columnConstraints>
+
+                            <!-- Check-in Date -->
+                            <Label text="Check-in:" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
+                                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                            <DatePicker fx:id="checkInDatePicker"
+                                        prefWidth="200" prefHeight="40"
+                                        GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                        style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
+
+                            <!-- Check-out Date -->
+                            <Label text="Check-out:" style="-fx-text-fill: #4a5568; -fx-font-size: 14;"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                            <DatePicker fx:id="checkOutDatePicker"
+                                        prefWidth="200" prefHeight="40"
+                                        GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                        style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-radius: 4; -fx-background-radius: 4;"/>
+                        </GridPane>
+                    </VBox>
+
                 </VBox>
             </HBox>
         </VBox>
     </ScrollPane>
 
-    <!-- Footer -->
+
     <!-- Footer -->
     <HBox alignment="CENTER" style="-fx-padding: 20; -fx-background-color: white; -fx-border-color: #e8e8e8; -fx-border-width: 1 0 0 0;">
         <Button fx:id="confirmButton"
